@@ -65,6 +65,10 @@ export default function RestaurantDetailScreen ({ navigation, route }) {
         {!item.availability &&
           <TextRegular textStyle={styles.availability }>Not available</TextRegular>
         }
+        <TextSemiBold textStyle={styles.price}>Grasas: {item.grasas}</TextSemiBold>
+        <TextSemiBold textStyle={styles.price}>Carbohidratos: {item.carbohidratos}</TextSemiBold>
+        <TextSemiBold textStyle={styles.price}>Proteinas: {item.proteinas}</TextSemiBold>
+        <TextSemiBold textStyle={styles.price}>Calorias: {item.calorias}</TextSemiBold>
          <View style={styles.actionButtonsContainer}>
           <Pressable
             onPress={() => navigation.navigate('EditProductScreen', { id: item.id })
@@ -243,6 +247,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     bottom: 5,
     position: 'absolute',
-    width: '90%'
+    width: '70%'
   }
 })

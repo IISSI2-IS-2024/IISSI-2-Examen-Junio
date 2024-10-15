@@ -1,5 +1,5 @@
-import { Product, Order, Restaurant, RestaurantCategory, ProductCategory } from '../models/models.js'
 import Sequelize from 'sequelize'
+import { Order, Product, ProductCategory, Restaurant, RestaurantCategory } from '../models/models.js'
 
 const indexRestaurant = async function (req, res) {
   try {
@@ -38,6 +38,10 @@ const show = async function (req, res) {
 
 const create = async function (req, res) {
   let newProduct = Product.build(req.body)
+  const grasas = newProduct.grasas
+  const proteinas = newProduct.proteinas
+  const carbohidratos = newProduct.carbohidratos
+  newProduct.calorias = 9 * grasas + 4 * proteinas + 4 * carbohidratos
   try {
     newProduct = await newProduct.save()
     res.json(newProduct)

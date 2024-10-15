@@ -27,6 +27,22 @@ module.exports = {
       availability: {
         type: Sequelize.BOOLEAN
       },
+      grasas: {
+        type: Sequelize.DOUBLE,
+        defaultValue: 0.0
+      },
+      proteinas: {
+        type: Sequelize.DOUBLE,
+        defaultValue: 0.0
+      },
+      carbohidratos: {
+        type: Sequelize.DOUBLE,
+        defaultValue: 0.0
+      },
+      calorias: {
+        type: Sequelize.DOUBLE,
+        defaultValue: 0.0
+      },
       restaurantId: {
         type: Sequelize.INTEGER,
         allowNull: false,

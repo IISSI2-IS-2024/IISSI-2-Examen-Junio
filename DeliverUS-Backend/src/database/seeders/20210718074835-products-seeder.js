@@ -18,7 +18,7 @@ module.exports = {
       [
       // Casa felix id=1
       // Starters id=1
-        { name: 'Ensaladilla', description: 'Tuna salad with mayonnaise', price: 2.5, image: process.env.PRODUCTS_FOLDER + '/ensaladilla.jpeg', order: 1, availability: true, restaurantId: 1, productCategoryId: 1 },
+        { name: 'Ensaladilla', description: 'Tuna salad with mayonnaise', price: 2.5, image: process.env.PRODUCTS_FOLDER + '/ensaladilla.jpeg', order: 1, availability: true, grasas: 10.0, proteinas: 30.0, carbohidratos: 50.0, calorias: 0.0, restaurantId: 1, productCategoryId: 1 },
         { name: 'Olives', description: 'Home made', price: 1.5, image: process.env.PRODUCTS_FOLDER + '/aceitunas.jpeg', order: 2, availability: true, restaurantId: 1, productCategoryId: 1 },
 
         // drinks id=3

@@ -4,6 +4,22 @@ import { checkFileIsImage, checkFileMaxSize } from './FileValidationHelper.js'
 
 const maxFileSize = 2000000 // around 2Mb
 
+const checkCaloriesInBound = async (value, { req }) => {
+  try {
+    const grasas = req.body.grasas
+    const proteinas = req.body.proteinas
+    const carbohidratos = req.body.carbohidratos
+    const calorias = grasas * 9 + proteinas * 4 + carbohidratos * 4
+    if (calorias <= 1000) {
+      return Promise.resolve()
+    } else {
+      return Promise.reject(new Error('Not healthy'))
+    }
+  } catch (error) {
+    return Promise.reject(new Error(error))
+  }
+}
+
 const checkRestaurantExists = async (value, { req }) => {
   try {
     const restaurant = await Restaurant.findByPk(req.body.restaurantId)
@@ -20,6 +36,10 @@ const create = [
   check('price').exists().isFloat({ min: 0 }).toFloat(),
   check('order').default(null).optional({ nullable: true }).isInt().toInt(),
   check('availability').optional().isBoolean().toBoolean(),
+  check('grasas').exists().isFloat({ min: 0 }).toFloat(),
+  check('proteinas').exists().isFloat({ min: 0 }).toFloat(),
+  check('carbohidratos').exists().isFloat({ min: 0 }).toFloat(),
+  check('calorias').exists().isFloat({ min: 0 }).custom(checkCaloriesInBound).toFloat(),
   check('productCategoryId').exists().isInt({ min: 1 }).toInt(),
   check('restaurantId').exists().isInt({ min: 1 }).toInt(),
   check('restaurantId').custom(checkRestaurantExists),

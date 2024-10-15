@@ -26,7 +26,11 @@ const loadModel = (sequelize, DataTypes) => {
     order: DataTypes.INTEGER,
     availability: DataTypes.BOOLEAN,
     restaurantId: DataTypes.INTEGER,
-    productCategoryId: DataTypes.INTEGER
+    productCategoryId: DataTypes.INTEGER,
+    grasas: DataTypes.DOUBLE,
+    proteinas: DataTypes.DOUBLE,
+    carbohidratos: DataTypes.DOUBLE,
+    calorias: DataTypes.DOUBLE
   }, {
     sequelize,
     modelName: 'Product'
